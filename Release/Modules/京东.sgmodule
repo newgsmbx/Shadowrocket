@@ -1,11 +1,11 @@
 #!name=京东
-#!desc=2025-10-29 13:37:25
+#!desc=2025-11-01 10:34:31
 
 [Rule]
 URL-REGEX, "^https?:\/\/w{32}\.jddebug\.com\/diagnose\?", REJECT
 
 [URL Rewrite]
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) - reject-200
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style|jdaPreDownload) - reject-200
 
 [Body Rewrite]
 http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig 'if (getpath(["data","JDHttpToolKit","httpdns"]) | has("httpdns")) then (setpath(["data","JDHttpToolKit","httpdns","httpdns"]; "0")) else . end'
